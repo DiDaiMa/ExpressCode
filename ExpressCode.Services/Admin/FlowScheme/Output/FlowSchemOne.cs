@@ -13,6 +13,10 @@ namespace ExpressCode.Services.Admin.FlowScheme
         /// </summary>
         public string Id { get; set; }
         /// <summary>
+        /// 流程编号
+        /// </summary>
+        public string SchemeCode { get; set; }
+        /// <summary>
         /// 名称
         /// </summary>
         public string SchemeName { get; set; }
