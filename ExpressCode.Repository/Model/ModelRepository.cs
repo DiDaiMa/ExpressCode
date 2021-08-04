@@ -8,6 +8,10 @@ namespace ExpressCode.Repository.Model
     {
         DBFactory dBFactory = new DBFactory();
 
+        /// <summary>
+        /// 模块获取
+        /// </summary>
+        /// <returns></returns>
         public List<ModelEntity> ModelShow()
         {
             string sql = "select * from Module";
@@ -60,7 +64,7 @@ namespace ExpressCode.Repository.Model
                 @Status = me.Status,
                 @ParentName = me.ParentName,
                 @SortNo = me.SortNo,
-                @ParentId=me.ParentId,
+                @ParentId = me.ParentId,
                 @Code = me.Code,
                 @IsSys = me.IsSys
             });
@@ -73,8 +77,9 @@ namespace ExpressCode.Repository.Model
         public int ModulePut(ModelEntity me)
         {
             string sql = $"update  Module set Name=@Name ,Url=@Url,IsLeaf=@IsLeaf,IsAutoExpand=@IsAutoExpand,IconName=@IconName,Status=@Status,ParentName=@ParentName,SortNo=@SortNo,ParentId=@ParentId,Code=@Code,IsSys=@IsSys where Id=@Id";
-            return dBFactory.GetBaseRepository().Execute(sql,new {
-                @Id=me.Id,
+            return dBFactory.GetBaseRepository().Execute(sql, new
+            {
+                @Id = me.Id,
                 @Name = me.Name,
                 @Url = me.Url,
                 @IsLeaf = me.IsLeaf,
