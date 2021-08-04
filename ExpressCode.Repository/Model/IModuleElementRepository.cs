@@ -12,11 +12,30 @@ namespace ExpressCode.Repository.Model
   [Intercept(typeof(AopTest))]
   public interface IModuleElementRepository
   {
-       List<ModuleElementEntity> ModuleElementShow();
+        /// <summary>
+        /// 模块元素显示
+        /// </summary>
+        /// <returns></returns>
+        List<ModuleElementEntity> ModuleElementShow();
+        /// <summary>
+        /// 模块元素删除
+        /// </summary>
+        /// <param name="ModuleElementId"></param>
+        /// <returns></returns>
 
-       int ModuleLementDel(string ModuleElementId);
+        int ModuleLementDel(string ModuleElementId);
+        /// <summary>
+        /// 模块元素添加
+        /// </summary>
+        /// <param name="me"></param>
+        /// <returns></returns>
 
-       int ModuleLementAdd(ModuleElementEntity me);
-       int ModuleLementPut(ModuleElementEntity me);
+        int ModuleLementAdd(ModuleElementEntity me);
+        /// <summary>
+        /// 模块元素修改
+        /// </summary>
+        /// <param name="me"></param>
+        /// <returns></returns>
+        int ModuleLementPut(ModuleElementEntity me);
     }
 }
