@@ -15,5 +15,12 @@ namespace ExpressCode.Repository.FlowInstanceds
         /// </summary>
         /// <returns></returns>
         List<T> MyShow();
+
+        /// <summary>
+        /// 我的流程批删
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        int MyDel(string id);
     }
 }

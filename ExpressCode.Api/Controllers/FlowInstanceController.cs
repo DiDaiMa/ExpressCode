@@ -1,4 +1,6 @@
 ﻿using ExpressCode.Model;
+using ExpressCode.Model.Admin;
+using ExpressCode.Repository.FlowInstanceds;
 using ExpressCode.Services.Admin.FlowInstances;
 using ExpressCode.Services.Admin.FlowInstances.Outs;
 using ExpressCode.Services.Admin.FlowInstances.Outs;
@@ -17,10 +19,12 @@ namespace ExpressCode.Api.Controllers
     public class FlowInstanceController : ControllerBase
     {
         public IFlowInstanceService<OutFlow> _FlowInstanceService;
+        public IFlowInstanceRepository<FlowInstance> _FlowInstanceRepository;
 
-        public FlowInstanceController(IFlowInstanceService<OutFlow> FlowInstanceService) 
+        public FlowInstanceController(IFlowInstanceService<OutFlow> FlowInstanceService, IFlowInstanceRepository<FlowInstance> FlowInstanceRepository) 
         {
             _FlowInstanceService = FlowInstanceService;
+            _FlowInstanceRepository = FlowInstanceRepository;
         }
 
         [Route("FlowShow")]
@@ -106,6 +110,17 @@ namespace ExpressCode.Api.Controllers
         }
 
 
+        /// <summary>
+        /// 我的流程批删
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("FlowMyDel")]
+        [HttpPost]
+        public int FlowMyDel(string id)
+        {
+            return _FlowInstanceRepository.MyDel(id);
+        }
 
     }
 }

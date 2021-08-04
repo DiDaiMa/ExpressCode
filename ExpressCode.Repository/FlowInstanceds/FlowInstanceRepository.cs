@@ -33,5 +33,19 @@ namespace ExpressCode.Repository.FlowInstanceds
             string sql = $"select * from FlowInstance";
             return db.GetBaseRepository().Query<FlowInstance>(sql);
         }
+
+        public int MyDel(string id)
+        {
+            int i = 0;
+            string[] iid = id.Split(',');
+
+            foreach (var ids in iid)
+            {
+                string sql = $"delete from FlowInstance where Id in (@Id)";
+                i += db.GetBaseRepository().Execute(sql, new { @Id = ids });
+            }
+
+            return i;
+        }
     }
 }
