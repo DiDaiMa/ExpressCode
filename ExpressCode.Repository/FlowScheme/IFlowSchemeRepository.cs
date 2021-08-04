@@ -20,10 +20,16 @@ namespace ExpressCode.Repository.FlowScheme
         /// <returns></returns>
         int StateDelete(string ids);
         /// <summary>
-        /// 
+        /// 添加
         /// </summary>
         /// <param name="flow"></param>
         /// <returns></returns>
         int AddFlow(FlowSchemes flow);
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="flow"></param>
+        /// <returns></returns>
+        int EditFlow(FlowSchemes flow);
     }
 }

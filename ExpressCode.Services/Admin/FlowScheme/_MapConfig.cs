@@ -13,8 +13,12 @@ namespace ExpressCode.Services.Admin.FlowScheme
     {
         public _MapConfig()
         {
+            //显示
             CreateMap<FlowSchemes,FlowSchemOne>();
+            //添加
             CreateMap<FlowSchemIAddnput, FlowSchemes>();
+            //修改
+            CreateMap<FlowSchemIEditnput, FlowSchemes>();
         }
     }
 }
