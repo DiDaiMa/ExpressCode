@@ -39,6 +39,18 @@ namespace ExpressCode.Services.Admin.FlowInstances
             return Flows;
         }
 
+        /// <summary>
+        /// 已处理流程显示
+        /// </summary>
+        /// <returns></returns>
+        public List<OutFlow> FlowDealShow()
+        {
+            List<FlowInstance> FlowDealShow = _Flow.DealShow();
+
+            var Flows = Mapper.Map<List<OutFlow>>(FlowDealShow);
+
+            return Flows;
+        }
 
     }
 }

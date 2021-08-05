@@ -34,6 +34,11 @@ namespace ExpressCode.Repository.FlowInstanceds
             return db.GetBaseRepository().Query<FlowInstance>(sql);
         }
 
+        /// <summary>
+        /// 我的流程 批删
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public int MyDel(string id)
         {
             int i = 0;
@@ -46,6 +51,16 @@ namespace ExpressCode.Repository.FlowInstanceds
             }
 
             return i;
+        }
+
+        /// <summary>
+        /// 已处理流程显示
+        /// </summary>
+        /// <returns></returns>
+        public List<FlowInstance> DealShow()
+        {
+            string sql = $"select * from FlowInstance where IsFinish=0 or IsFinish=1 or IsFinish=3";
+            return db.GetBaseRepository().Query<FlowInstance>(sql);
         }
     }
 }

@@ -122,5 +122,49 @@ namespace ExpressCode.Api.Controllers
             return _FlowInstanceRepository.MyDel(id);
         }
 
+
+        /// <summary>
+        /// 已处理流程显示
+        /// </summary>
+        /// <param name="PageIndex"></param>
+        /// <param name="PageSize"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        [Route("FlowDealShow")]
+        [HttpGet]
+        public string FlowDealShow(int PageIndex, int PageSize, string name)
+        {
+            int totals;
+            List<OutFlow> Show = _FlowInstanceService.FlowDealShow();
+
+            totals = Show.Count();
+
+            Show = Show.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                Show = Show.Where(p => p.CustomName.Contains(name)).ToList();
+            }
+            string json;
+
+            json = JsonConvert.SerializeObject(new ResultData
+            {
+                code = 0,
+                msg = "请求成功",
+                data = new { Show, totals }
+            });
+
+            if (json == null)
+            {
+                json = JsonConvert.SerializeObject(new ResultData
+                {
+                    code = 0,
+                    msg = "失败",
+                    data = ""
+                });
+            }
+
+            return json;
+        }
     }
 }

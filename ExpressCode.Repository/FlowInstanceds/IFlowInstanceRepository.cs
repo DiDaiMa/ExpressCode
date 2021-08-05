@@ -22,5 +22,11 @@ namespace ExpressCode.Repository.FlowInstanceds
         /// <param name="id"></param>
         /// <returns></returns>
         int MyDel(string id);
+
+        /// <summary>
+        /// 已处理流程
+        /// </summary>
+        /// <returns></returns>
+        List<T> DealShow();
     }
 }

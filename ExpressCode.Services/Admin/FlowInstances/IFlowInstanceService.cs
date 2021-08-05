@@ -19,5 +19,11 @@ namespace ExpressCode.Services.Admin.FlowInstances
         /// </summary>
         /// <returns></returns>
         List<T> FlowMyShow();
+
+        /// <summary>
+        /// 已处理流程显示
+        /// </summary>
+        /// <returns></returns>
+        List<T> FlowDealShow();
     }
 }
