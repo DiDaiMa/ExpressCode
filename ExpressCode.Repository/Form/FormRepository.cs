@@ -1,5 +1,6 @@
 ﻿using ExpressCode.Common;
 using ExpressCode.Model;
+using ExpressCode.Repository.FlowScheme;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace ExpressCode.Repository
     {
         //调用工厂factory
         DBFactory db = new DBFactory();
-
+        FlowSchemeRepository flowRepository = new FlowSchemeRepository();
 
         /// <summary>
         /// 显示
@@ -33,10 +34,14 @@ namespace ExpressCode.Repository
         {
             int i = 0;
             string[] arr = ids.Split(',');
+            var da = flowRepository.Index();
             foreach (var item in arr)
             {
-                string sql = $"update Form set DeleteMark=1 where Id=@id";
-                i += db.GetBaseRepository().Execute(sql, new { @id = item });
+                if (da.Where(p => p.FrmId.Equals(item)).ToList().Count == 0)
+                {
+                    string sql = $"update Form set DeleteMark=1 where Id=@id";
+                    i += db.GetBaseRepository().Execute(sql, new { @id = item });
+                }
             }
             return i;
         }
@@ -67,7 +72,7 @@ namespace ExpressCode.Repository
                 @CreateUserName = "超级管理员",
                 @OrgId = "543a9fcf-4770-4fd9-865f-030e562be238"
             };
-            return db.GetBaseRepository().Execute(sql,param);
+            return db.GetBaseRepository().Execute(sql, param);
         }
 
         /// <summary>
