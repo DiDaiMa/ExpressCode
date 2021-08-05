@@ -24,6 +24,16 @@ namespace ExpressCode.Services.Admin.FlowScheme
             dtoEntity.DeleteMark = fl.Delete;
             return flow.AddFlow(dtoEntity);
         }
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="fl"></param>
+        /// <returns></returns>
+        public int EditFlow(FlowSchemIEditnput fl)
+        {
+            var dtoEntity = Mapper.Map<FlowSchemes>(fl);
+            return flow.EditFlow(dtoEntity);
+        }
 
         /// <summary>
         /// 流程模块的显示

@@ -40,6 +40,28 @@ namespace ExpressCode.Repository.FlowScheme
         }
 
         /// <summary>
+        /// 修改流程
+        /// </summary>
+        /// <param name="flow"></param>
+        /// <returns></returns>
+        public int EditFlow(FlowSchemes flow)
+        {
+            string sql = "update FlowScheme set SchemeName=@SchemeName,SchemeContent=@SchemeContent,Description=@Description,ModifyDate=@ModifyDate,ModifyUserId=@ModifyUserId,ModifyUserName=@ModifyUserName where Id=@id";
+            object param = new
+            {
+                @id = flow.Id,
+                @SchemeName = flow.SchemeName,
+                @SchemeContent = flow.SchemeContent,
+                @Description = flow.Description,
+                @ModifyDate = DateTime.Now,
+                @ModifyUserId = "",
+                @ModifyUserName = "",
+            };
+            return db.GetBaseRepository().Execute(sql, param);
+
+        }
+
+        /// <summary>
         /// 流程模块的显示
         /// </summary>
         /// <returns></returns>

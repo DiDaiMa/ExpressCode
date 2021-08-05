@@ -22,5 +22,6 @@ namespace ExpressCode.Services.Admin.FlowScheme
         int StateDelete(string Id);
 
         int AddFlow(FlowSchemIAddnput flow);
+        int EditFlow(FlowSchemIEditnput flow);
     }
 }

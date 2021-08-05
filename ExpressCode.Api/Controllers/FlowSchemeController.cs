@@ -121,5 +121,37 @@ namespace ExpressCode.Api.Controllers
             }
             return Ok(data);
         }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="fl"></param>
+        /// <returns></returns>
+        [Route("EditFlow")]
+        [HttpPut]
+        public ActionResult EditFlow(FlowSchemIEditnput fl)
+        {
+            ResultData data = new ResultData();
+            try
+            {
+                var i = flow.EditFlow(fl);
+                data = new ResultData
+                {
+                    code = 200,
+                    msg = "成功",
+                    data = i
+                };
+            }
+            catch (Exception)
+            {
+                data = new ResultData
+                {
+                    code = 500,
+                    msg = "失败",
+                    data = 0
+                };
+            }
+            return Ok(data);
+        }
     }
 }
